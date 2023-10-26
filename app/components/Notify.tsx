@@ -175,7 +175,7 @@ const Received = () => {
   )
 }
 
-const Response = () => {
+const Notify = () => {
   return (
     <>
     {/* <Accepted/> */}
@@ -186,4 +186,4 @@ const Response = () => {
   )
 }
 
-export default Response
+export default Notify

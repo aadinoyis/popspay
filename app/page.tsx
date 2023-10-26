@@ -1,9 +1,4 @@
-import Balance from "./components/Balance";
-import Nav from "./components/Nav";
-import PayDocker from "./components/PayDocker";
-import Response from "./components/Response";
-import Verify from "./components/Verify";
-import ChoiceDocker from "./components/ChoiceDocker";
+import LoginPage from "./login/page";
 
 export default function Home() {
   // function formatAmount(input:any) {
@@ -18,21 +13,8 @@ export default function Home() {
 
 
   return (
-    <main>
-      {/* USER ACTION  */}
-      <Nav/>
-
-      {/* FUNDING AND WIDRAWAL */}
-      <Balance/>
-
-      {/* <ChoiceDocker/> */}
-      
-      <Response/>
-
-      {/* <Verify/> */}
-
-      {/* PAYMENT HANDLING */}
-      <PayDocker/>
-    </main>
+    <>
+    <LoginPage/>
+    </>
   )
 }
