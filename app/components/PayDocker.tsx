@@ -6,6 +6,7 @@ const PayDocker = ({onclick}:any) => {
     <>    
     <div style={{
       width: '100%',
+      maxWidth: '100%',
       display: 'flex',
       flexDirection: 'column',
       gap: '1rem',

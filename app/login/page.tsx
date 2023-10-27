@@ -5,12 +5,19 @@ const HankoAuth = dynamic(() => import('../components/HankoAuth'), { ssr: false 
 export default function LoginPage() {
  return (
   <div style={{
-    borderRadius: 'var(--radius)',
-    overflow: 'hidden',
-    padding: '2rem',
+    padding: '1rem',
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    alignItems: 'flex-end',
+    justifyContent: 'center'
   }}>
-
-    <HankoAuth />
+    <div style={{
+      borderRadius: 'var(--radius)',
+      overflow: 'hidden',
+    }}>
+      <HankoAuth />
+    </div>
   </div>
  );
 }

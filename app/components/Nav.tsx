@@ -4,6 +4,7 @@ const Nav = () => {
   return (
     <div style={{
       width: '100%',
+      maxWidth: '100%',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between'
