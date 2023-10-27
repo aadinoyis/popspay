@@ -10,7 +10,8 @@ export default function LoginPage() {
     height: '100%',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    background: 'rgba(0,0,0,0)',
   }}>
     <div style={{
       borderRadius: 'var(--radius)',
