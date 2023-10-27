@@ -5,7 +5,8 @@
 }
 
 :root {
-  --color-main: rgb(123, 255, 0);
+  --color-main: rgb(139, 255, 30);
+  --color-alt:  rgba(223, 254, 194, 0.825);
   --white-text: #ffffffeb;
   --color-white: #fff;
   --color-off: #626262;
@@ -14,6 +15,69 @@
   --color-black-100: #272727;
   --color-black-150: #3c3c3c;
   --radius: 15px;
+}
+
+hanko-auth,
+hanko-profile {
+  /* Color Scheme */
+  --color: var(--color-white);
+  --color-shade-1: #8f9095;
+  --color-shade-2: #e5e6ef;
+
+  --brand-color: var(--color-main);
+  --brand-color-shade-1: var(--color-main);
+  --brand-contrast-color: white;
+
+  --background-color: var(--color-black-100);
+  --error-color: #9d2323;
+  --link-color: #00a6ff;
+
+  /* Font Styles */
+  --font-weight: 400;
+  --font-size: 16px;
+  --font-family: sans-serif;
+
+  /* Border Styles */
+  --border-radius: var(--radius);
+  --border-style: none;
+  --border-width: 1px;
+
+  /* Item Styles */
+  --item-height: 45px;
+  --item-margin: 1rem 0;
+
+  /* Container Styles */
+  --container-padding: 2rem;
+  --container-max-width: 500px;
+  --container-border-radius: var(--radius);
+
+  /* Headline Styles */
+  --headline1-font-size: 1.5rem;
+  --headline1-font-weight: 400;
+  --headline1-margin: 0 0 1rem;
+
+  --headline2-font-size: 16px;
+  --headline2-font-weight: 600;
+  --headline2-margin: 1rem 0 0.5rem;
+
+  /* Divider Styles */
+  --divider-padding: 0 42px;
+  --divider-visibility: visible;
+
+  /* Link Styles */
+  --link-text-decoration: none;
+  --link-text-decoration-hover: underline;
+
+  /* Input Styles */
+  --input-min-width: 14em;
+
+  /* Button Styles */
+  --button-min-width: max-content;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 input, button {
@@ -33,10 +97,129 @@ svg {
   height: var(--size);
 }
 
+.spinner {
+  --size: 24px;
+  width: var(--size);
+  height: var(--size);
+  border: 2px solid var(--color-white);
+  border-bottom-color: var(--color-main);
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+} 
+
+.loader {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: block;
+  margin:15px auto;
+  position: relative;
+  color: #FFF;
+  box-sizing: border-box;
+  animation: animloader 1s linear infinite alternate;
+}
+
+@keyframes animloader {
+  0% {
+    box-shadow: -38px -12px ,  -14px 0,  14px 0, 38px 0;
+  }
+  33% {
+    box-shadow: -38px 0px, -14px -12px,  14px 0, 38px 0;
+  }
+  66% {
+    box-shadow: -38px 0px , -14px 0, 14px -12px, 38px 0;
+  }
+  100% {
+    box-shadow: -38px 0 , -14px 0, 14px 0 , 38px -12px;
+  }
+}
+
+.roundspinner {
+  color: #ffffff;
+  font-size: 45px;
+  text-indent: -9999em;
+  overflow: hidden;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  position: relative;
+  transform: translateZ(0);
+  animation: mltShdSpin 1.7s infinite ease, round 1.7s infinite ease;
+}
+
+@keyframes mltShdSpin {
+  0% {
+    box-shadow: 0 -0.83em 0 -0.4em,
+    0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em,
+    0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em, 
+    0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 
+    0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em, 
+    -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, 
+    -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+  }
+  20% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em,
+     -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, 
+     -0.749em -0.34em 0 -0.477em;
+  }
+  38% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em,
+     -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, 
+     -0.82em -0.09em 0 -0.477em;
+  }
+  100% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 
+    0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+}
+
+@keyframes round {
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+}
+
+.loader_box {
+  position: fixed;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  padding: 2rem;
+  height: 100vh;
+  z-index: 9999;
+  background: #000000aa;
+  /* background: #0000005d; */
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ 
 body {
-  background: url('../public//images/medium-shot-girl-relaxing-outdoors.jpg') no-repeat center center/cover;
+  background: url('../public/images/3d-render-techno-low-poly-background-with-connecting-lines-dots.jpg') no-repeat center center/cover;
   width: 100vw;
   height: 100vh;
+  min-height: 100vh;
   position: relative;
   display: grid;
   place-items: center;
@@ -48,10 +231,13 @@ body::after {
   content: '';
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000000cb;
-  backdrop-filter: blur(25px);
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  /* background: #000000cb;
+  backdrop-filter: blur(25px); */
+  background: #0000007a;
+  /* backdrop-filter: blur(5px); */
   z-index: -1;
 }
 
@@ -63,7 +249,7 @@ main {
   place-items: center;
   z-index: 99;
   padding: 14px;
-  padding: 2rem 1rem 4rem;
+  padding: 2rem 1rem;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -71,7 +257,7 @@ main {
 }
 
 .btn_pri {
-  --size: 36px;
+  --size: 48px;
   background: var(--color-main);
   width: var(--size);
   height: var(--size);
@@ -90,23 +276,23 @@ main {
 
 .inp_bar {
   background: var(--color-black-100);
-  height: 55px;
+  height: 45px;
   width: 100%;
   color: var(--color-white);
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0 1rem;
 }
 
 .inp_bar input {
   flex: 1;
   background: transparent;
   color: var(--white-text);
+  font-size: 1rem;
 }
 
 .icon_circle {
-  --size: 24px;
+  --size: 32px;
   width: var(--size);
   height: var(--size);
   display: flex;
@@ -123,24 +309,28 @@ main {
 .docker {
   position: fixed;
   content: '';
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
-  padding: 1rem;
+  max-width: 100%;
+  padding: 2rem;
   height: 100vh;
   z-index: 9999;
-  /* background: #000000aa; */
-  background: #0000005d;
-  backdrop-filter: blur(15px);
-  display: grid;
-  place-items: center;
+  background: #000000aa;
+  /* background: #0000005d; */
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .docker .docker_box {
   width: 100%;
   max-width: 500px;
   background: var(--color-black-100);
+  background: linear-gradient(125deg, var(--color-main), 1%, var(--color-black-100), 5%, var(--color-black-50), 95%, var(--color-black-100));
   border-radius: var(--radius);
+  box-shadow: 0 0 9px 11px rgba(0, 0, 0, 0.621);
   padding: 2rem 1rem;
 }
 
@@ -149,9 +339,9 @@ main {
   width: var(--size);
   height: var(--size);
   border-radius: var(--radius);
-  background: var(--color-black-50);
+  background: var(--color-black-100);
   color: var(--color-main);
   text-align: center;
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
