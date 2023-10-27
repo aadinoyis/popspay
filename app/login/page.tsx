@@ -9,7 +9,7 @@ export default function LoginPage() {
     width: '100%',
     height: '100%',
     display: 'flex',
-    alignItems: 'flex-end',
+    alignItems: 'center',
     justifyContent: 'center'
   }}>
     <div style={{

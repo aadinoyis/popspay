@@ -12,7 +12,7 @@ const Dashboard = () => {
   const n = searchParams.get('n');
   
   return (
-    <main>
+    <div className='dashboard'>
       <Nav/>
 
       <Balance/>
@@ -24,7 +24,7 @@ const Dashboard = () => {
       {/* <Notify/> */}
 
       <PayDocker/>
-    </main>
+    </div>
   )
 }
 

@@ -14,9 +14,9 @@ export default function Home() {
 
 
   return (
-    <>
-    {/* <LoginPage/> */}
-    <Dashboard/>
-    </>
+    <main className="main">
+    <LoginPage/>
+    {/* <Dashboard/> */}
+    </main>
   )
 }
