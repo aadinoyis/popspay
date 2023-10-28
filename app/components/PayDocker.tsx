@@ -19,7 +19,7 @@ const PayDocker = ({onclick}:any) => {
         borderTopRightRadius: 'var(--radius)',
         }}>
         
-        <button className='icon_circle'>
+        <button className="icon_box">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="512"
@@ -57,7 +57,7 @@ const PayDocker = ({onclick}:any) => {
         borderBottomLeftRadius: 'var(--radius)',
         borderBottomRightRadius: 'var(--radius)',
         }}>
-        <button className='icon_circle'>
+        <button className='icon_box'>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="512"
@@ -71,8 +71,8 @@ const PayDocker = ({onclick}:any) => {
 
         <input type="text" name="amount" id="amount" placeholder="00.00"/>
         
-        <Link href={"?n=action"}>
-        <button onClick={onclick} className='btn_pri'>
+        <Link href={"?n=action"} onClick={onclick} className='btn_pri'>
+        <button >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             data-name="Layer 1"

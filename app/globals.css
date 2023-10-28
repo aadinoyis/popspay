@@ -84,6 +84,7 @@ input, button {
   outline: none;
   background: transparent;
   cursor: pointer;
+  min-width: 0;
 }
 
 input::-webkit-inner-spin-button {
@@ -218,6 +219,7 @@ body {
   width: 100%;
   height: 100vh;
   font-family: sans-serif;
+  background: url('../public/images/3d-render-techno-low-poly-background-with-connecting-lines-dots_11zon.jpg') no-repeat center center/cover;
 }
 
 .main {
@@ -225,18 +227,29 @@ body {
   margin: 0 auto;
   overflow: hidden;
   height: 100%;
-  padding: 2rem 1rem;
-  background: url('../public/images/3d-render-techno-low-poly-background-with-connecting-lines-dots_11zon.jpg') no-repeat center center/cover;
   position: relative;
+  background: transparent;
 }
 
 .dashboard {
+  padding: 2rem 1rem;
+  width: 100%;
   max-width: 500px;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: transparent;
+}
+
+.auth {
   padding: 1rem;
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: transparent;
 }
 
@@ -249,10 +262,11 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .btn_pri svg {
-  --size: 1.4rem;
+  --size: 1.2rem;
   width: var(--size);
   height: var(--size);
   fill: var(--color-white); 
@@ -275,7 +289,7 @@ body {
   font-size: 1rem;
 }
 
-.icon_circle {
+.icon_box {
   --size: 32px;
   width: var(--size);
   height: var(--size);
@@ -284,11 +298,11 @@ body {
   justify-content: center;
   border-radius: 8px;
   background: var(--color-black-50);
+  flex-shrink: 0;
 }
 
-.icon_circle svg {
+.icon_box svg {
   fill: var(--color-off);
-  flex-shrink: 0;
 }
 
 .docker {
