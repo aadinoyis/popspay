@@ -20,7 +20,9 @@ export async function POST(req: Request) {
     // .select()
 
     return NextResponse.json({ message: 'user not found' }, { status: 200 });
+
   }
+  console.log({ message: userID, email: email })
   return NextResponse.json({ message: userID, email: email }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: "Not Found" }, { status: 404 });
