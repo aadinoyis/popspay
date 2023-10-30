@@ -28,7 +28,7 @@ const Dashboard = async () => {
       }
   
       const data = await response.json();
-      console.log(data[0]);
+      console.log(data);
       // setUser(data);
     } catch (error) {
       console.error('Error:', error);
