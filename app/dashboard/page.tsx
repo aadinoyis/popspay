@@ -16,18 +16,16 @@ const Dashboard = async () => {
   const [user, setUser] = useState<any[] | null>([])
 
   const fetchUser = async () => {
-    fetch('/api/user', {
+    const response = await fetch('/api/user', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
     })
-    .then((response) => {
-      return response.json()
-    })
-    .then((data) => {
-      setUser(data)
-    })
+
+    const data = await response.json()
+    console.log(data)
+    setUser(data)
   }
   
   useEffect(() => {
