@@ -2,7 +2,9 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import * as jose from "jose";
 import { supabase } from "@/app/utils/Supabase";
-
+import { Hanko } from "@teamhanko/hanko-elements";
+const hankoApi:any = process.env.NEXT_PUBLIC_HANKO_API_URL;
+ 
 export async function POST(req: Request) {
   const token = cookies().get("hanko")?.value;
   const payload = jose.decodeJwt(token ?? "");
@@ -29,14 +31,16 @@ export async function POST(req: Request) {
 }
 
 export async function GET(req: Request) {
+  const hanko = new Hanko(hankoApi);
+  const {email} = await hanko.user.getCurrent();
   try {
     const token = cookies().get("hanko")?.value;
-  const payload = jose.decodeJwt(token ?? "");
+    const payload = jose.decodeJwt(token ?? "");
 
-  const userID = payload.sub;
+    const userID = payload.sub;
 
 
-    return NextResponse.json({ message: userID }, { status: 200 });
+    return NextResponse.json({ message: userID, email: email }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: "Not Found" }, { status: 404 });
     
