@@ -6,22 +6,22 @@ import { supabase } from "../../utils/Supabase";
 export async function POST(req: Request) {
   try {
     const token = cookies().get("hanko")?.value;
-  const payload = jose.decodeJwt(token ?? "");
+    const payload = jose.decodeJwt(token ?? "");
 
-  const userID = payload.sub;
+    const userID = payload.sub;
 
-  const { email } = await req.json();
-  if (!userID) {
-    return NextResponse.json({ message: 'user not found' }, { status: 200 });
-  }
-  // Create a new user if the user is not found
-  const { data, error } = await supabase
-  .from('users')
-  .upsert({ user_id: userID, email: email })
-  .select()
+    const { email } = await req.json();
+    if (!userID) {
+      return NextResponse.json({ message: 'user not found' }, { status: 200 });
+    }
+    // Create a new user if the user is not found
+    const { data, error } = await supabase
+    .from('users')
+    .upsert({ user_id: userID, email: email })
+    .select()
 
-  console.log({ message: userID, email: email })
-  return NextResponse.json({ message: data, email: email }, { status: 200 });
+    console.log({ message: userID, email: email })
+    return NextResponse.json({ message: data, email: email }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: "Not Found" }, { status: 404 });
   }
@@ -33,8 +33,12 @@ export async function GET(req: Request) {
     const payload = jose.decodeJwt(token ?? "");
 
     const userID = payload.sub;
+    const { data, error } = await supabase
+    .from('users')
+    .select('*')
+    .eq('user_id', userID);
 
-    return NextResponse.json({ message: userID }, { status: 200 });
+    return NextResponse.json({ message: data }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: "Not Found" }, { status: 404 });
   }

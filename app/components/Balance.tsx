@@ -1,4 +1,4 @@
-const Balance = ({onclick}:any) => {
+const Balance = ({balance}:any) => {
   return (
     <div style={{
       color: 'var(--color-white)',
@@ -19,7 +19,7 @@ const Balance = ({onclick}:any) => {
         <span style={{
           fontSize: '3.2rem',
           fontWeight: '600',
-        }}>10,000.00</span>
+        }}>{balance}.00</span>
 
         <div style={{
           color: 'var(--color-off)',
