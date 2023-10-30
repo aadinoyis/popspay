@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-const HankoAuth = dynamic(() => import('../components/HankoAuth'), { ssr: false })
+const HankoAuth = dynamic(() => import('../utils/HankoAuth'), { ssr: false })
 
 
 export default function LoginPage() {

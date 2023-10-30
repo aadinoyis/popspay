@@ -21,10 +21,23 @@ export default function HankoAuth() {
     // successfully logged in, redirect to a page in your application
     router.replace("/dashboard");
   }, [router]);
- 
+
+  const createUser = async () => {
+    const hanko = new Hanko(hankoApi);
+    const {email} = await hanko.user.getCurrent();
+    fetch('/api/user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+    });
+  }
+
   useEffect(
     () =>
       hanko?.onAuthFlowCompleted(() => {
+        createUser();
         redirectAfterLogin();
       }),
     [hanko, redirectAfterLogin]
