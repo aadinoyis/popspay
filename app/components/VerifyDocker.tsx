@@ -4,7 +4,7 @@ const Verify = () => {
     <div className="docker">
       <div className="docker_box">
         <div style={{
-          marginBottom: '2rem'
+          marginBottom: '3rem'
           }}>
           <h3 style={{
             color: 'var(--color-white)',

@@ -36,7 +36,7 @@ const PayDocker = ({onclick}:any) => {
           </svg>
         </button>
 
-        <input type="text" name="recepient" id="recepient" placeholder="username or email"/>
+        <input type="text" name="recepient" id="recepient" placeholder="user@mail.com"/>
 
 
         <button style={{marginRight: '.7rem'}}>
@@ -73,12 +73,14 @@ const PayDocker = ({onclick}:any) => {
         
         <Link href={"?n=action"} onClick={onclick} className='btn_pri'>
         <button >
-          <svg
+        <svg
             xmlns="http://www.w3.org/2000/svg"
+            width="512"
+            height="512"
             data-name="Layer 1"
             viewBox="0 0 24 24"
           >
-            <path d="M13.595 23.999c-.229 0-.455-.021-.674-.061-1.467-.267-2.947-1.463-2.947-3.532v-6.394H3.595c-2.071.001-3.267-1.48-3.534-2.948-.267-1.467.331-3.273 2.268-4.003L18.723.268c1.473-.555 3.047-.216 4.136.874a3.829 3.829 0 01.886 4.105l-6.83 16.457c-.611 1.621-2.011 2.295-3.319 2.295z"></path>
+            <path d="M5.521 19.9h5.322l3.519 3.515a2.035 2.035 0 001.443.6 2.1 2.1 0 00.523-.067 2.026 2.026 0 001.454-1.414l6.207-21.109zM4.087 18.5L22.572.012 1.478 6.233a2.048 2.048 0 00-.886 3.42l3.495 3.492z"></path>
           </svg>
         </button>
         </Link>

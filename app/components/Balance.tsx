@@ -17,8 +17,8 @@ const Balance = ({onclick}:any) => {
           fontWeight: '600',
         }}>NGN</span> 
         <span style={{
-          fontSize: '2.7rem',
-          fontWeight: '300',
+          fontSize: '3.2rem',
+          fontWeight: '600',
         }}>10,000.00</span>
 
         <div style={{
@@ -29,46 +29,35 @@ const Balance = ({onclick}:any) => {
           alignItems: 'center',
           justifyContent: 'center',
           borderRadius: '4px',
-          gap: '4rem',
+          gap: '2rem',
           }}>
-            <button style={{display: 'flex', alignItems: 'center', gap: '1rem', fontWeight: '600', color: 'var(--color-off)',}}>
+            <button style={{display: 'flex', alignItems: 'center', gap: '1rem', letterSpacing: '2px', fontWeight: '600', color: 'var(--color-off)',}}>
               <span>WIDTHRAW</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="512"
                 height="512"
                 viewBox="0 0 24 24"
-                fill="var(--color-main)"
+                style={{fill: 'var(--color-main)', width: '1.4rem', height: '1.4rem'}}
               >
                 <path d="M0 12A12 12 0 1012 0 12.013 12.013 0 000 12zm14.535-5.707l3.586 3.586a3 3 0 010 4.243l-3.586 3.585-.025.024a1 1 0 11-1.389-1.438L16.414 13 6 13.007a1 1 0 110-2L16.413 11l-3.292-3.293a1 1 0 111.414-1.414z"></path>
               </svg>
             </button>
 
-            <button style={{display: 'flex', alignItems: 'center', gap: '1rem', fontWeight: '600', color: 'var(--color-off)',}}>
+            <button style={{display: 'flex', alignItems: 'center', gap: '1rem',letterSpacing: '2px', fontWeight: '600', color: 'var(--color-off)',}}>
               <span>FUND</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="512"
                 height="512"
                 viewBox="0 0 24 24"
-                fill="var(--color-main)"
+                style={{fill: 'var(--color-main)', width: '1.4rem', height: '1.4rem'}}
               >
                 <path d="M0 12A12 12 0 1012 0 12.013 12.013 0 000 12zm14.535-5.707l3.586 3.586a3 3 0 010 4.243l-3.586 3.585-.025.024a1 1 0 11-1.389-1.438L16.414 13 6 13.007a1 1 0 110-2L16.413 11l-3.292-3.293a1 1 0 111.414-1.414z"></path>
               </svg>
             </button>            
           </div>
       </div>
-
-
-      {/* <button style={{
-        textTransform: 'uppercase',
-        color: 'var(--color-off)',
-        letterSpacing: '4px',
-        fontWeight: '600',
-        marginTop: '1rem',
-      }}>
-        <span>Withdraw</span>
-      </button> */}
     </div>
   )
 }

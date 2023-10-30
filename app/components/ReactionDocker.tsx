@@ -27,8 +27,8 @@ const Accepted = () => {
           data-name="Layer 1"
           viewBox="0 0 24 24"
           style={{
-            width: '2rem',
-            height: '2rem',
+            width: '4rem',
+            height: '4rem',
             fill: 'var(--color-off)',
             marginBottom: '.5rem'
           }}
@@ -158,8 +158,8 @@ const Received = () => {
           data-name="Layer 1"
           viewBox="0 0 24 24"
           style={{
-            width: '2rem',
-            height: '2rem',
+            width: '4rem',
+            height: '4rem',
             fill: 'var(--color-off)',
             marginBottom: '.5rem'
           }}

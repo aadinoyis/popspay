@@ -9,7 +9,7 @@
   --color-alt:  rgba(223, 254, 194, 0.825);
   --white-text: #ffffffeb;
   --color-white: #fff;
-  --color-off: #626262;
+  --color-off: #8f8f8f;
 
   --color-black-50: #191919;
   --color-black-100: #272727;
@@ -146,7 +146,7 @@ svg {
 }
 
 .roundspinner {
-  color: #ffffff;
+  color: var(--color-main);
   font-size: 45px;
   text-indent: -9999em;
   overflow: hidden;
@@ -197,22 +197,25 @@ svg {
   100% { transform: rotate(360deg) }
 }
 
-.loader_box {
+.loader_container {
   position: fixed;
   content: '';
   top: 0;
   left: 0;
   width: 100%;
   max-width: 100%;
-  padding: 2rem;
   height: 100vh;
   z-index: 9999;
-  background: #000000aa;
-  /* background: #0000005d; */
-  backdrop-filter: blur(5px);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.loader_box {
+  padding: 2rem;
+  border-radius: 2rem;
+  background: var(--color-black-100);
 }
  
 body {
@@ -233,6 +236,7 @@ body {
 
 .dashboard {
   padding: 2rem 1rem;
+  margin: auto;
   width: 100%;
   max-width: 500px;
   height: 100%;
@@ -245,6 +249,7 @@ body {
 .auth {
   padding: 1rem;
   width: 100%;
+  margin: auto;
   max-width: 500px;
   height: 100%;
   display: flex;
@@ -315,9 +320,8 @@ body {
   padding: 1rem;
   height: 100vh;
   z-index: 9999;
-  background: #00000064;
+  background: #0000007a;
   /* background: #0000005d; */
-  backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;

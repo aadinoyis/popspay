@@ -13,8 +13,10 @@ export const Spinner = () => {
 }
 export const RoundSpinner = () => {
   return (
-    <div className="loader_box">
-      <div className='roundspinner'></div>
+    <div className="loader_container">
+      <div className="loader_box">
+        <div className='roundspinner'></div>
+      </div>
     </div>
   )
 }

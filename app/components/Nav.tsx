@@ -1,6 +1,47 @@
 import Image from "next/image"
+"use client";
+import { useState, useEffect, useCallback } from "react";
+import { useRouter } from "next/navigation";
+import { Hanko } from "@teamhanko/hanko-elements";
+
+const hankoApi = process.env.NEXT_PUBLIC_HANKO_API_URL;
 
 const Nav = () => {
+  const router = useRouter();
+  const [hanko, setHanko] = useState<Hanko>();
+
+  useEffect(() => {
+    import("@teamhanko/hanko-elements").then(({ Hanko }) =>
+      setHanko(new Hanko(hankoApi ?? ""))
+    );
+  }, []);
+
+  const logout = () => {
+    hanko?.user
+      .logout()
+      .then(() => {
+        router.push("/");
+        router.refresh();
+        return;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const renewSession = useCallback(() => {
+    router.replace("/");
+  }, [router]);
+  
+  useEffect(
+    () =>
+      hanko?.onSessionExpired(() => {
+        renewSession();
+      }),
+  
+    [hanko, renewSession]
+  );
+
   return (
     <div style={{
       width: '100%',
@@ -19,7 +60,7 @@ const Nav = () => {
         alignItems: 'center',
         gap: '1rem'
         }}>
-        <button style={{
+        <button onClick={logout} style={{
           width: '24px',
           height: '24px',
           display: 'flex',
@@ -29,33 +70,23 @@ const Nav = () => {
           borderRadius: '4px'
           }}>
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            data-name="Layer 1"
-            viewBox="0 0 24 24"
-            fill="var(--color-white)"
-          >
-            <path d="M7 24H5c-2.757 0-5-2.243-5-5v-2a1 1 0 112 0v2c0 1.654 1.346 3 3 3h2a1 1 0 110 2zm17-5v-2a1 1 0 10-2 0v2c0 1.654-1.346 3-3 3h-2a1 1 0 100 2h2c2.757 0 5-2.243 5-5zm0-12V5c0-2.757-2.243-5-5-5h-2a1 1 0 100 2h2c1.654 0 3 1.346 3 3v2a1 1 0 102 0zM2 7V5c0-1.654 1.346-3 3-3h2a1 1 0 100-2H5C2.243 0 0 2.243 0 5v2a1 1 0 102 0zm16 3v4c0 1.654-1.346 3-3 3H9c-1.654 0-3-1.346-3-3v-4a3.003 3.003 0 012.953-2.999l.696-1.083A1.99 1.99 0 0111.331 5h1.338c.685 0 1.313.344 1.683.919l.695 1.082A3.002 3.002 0 0118 10zm-4 2a2 2 0 10-3.999-.001A2 2 0 0014 12z"></path>
-          </svg>
+      xmlns="http://www.w3.org/2000/svg"
+      width="512"
+      height="512"
+      x="0"
+      y="0"
+      enableBackground="new 0 0 512 512"
+      version="1.1"
+      viewBox="0 0 512 512"
+      xmlSpace="preserve"
+      fill="var(--color-white)"
+    >
+      <path d="M170.698 448H72.757a8.746 8.746 0 01-8.725-8.725V72.725A8.746 8.746 0 0172.757 64h97.941c17.673 0 32-14.327 32-32s-14.327-32-32-32H72.757C32.611.047.079 32.58.032 72.725v366.549C.079 479.42 32.611 511.953 72.757 512h97.941c17.673 0 32-14.327 32-32s-14.327-32-32-32z"></path>
+      <path d="M483.914 188.117l-82.816-82.752c-12.501-12.495-32.764-12.49-45.259.011s-12.49 32.764.011 45.259l72.789 72.768-289.941.597c-17.673 0-32 14.327-32 32s14.327 32 32 32l291.115-.533-73.963 73.963c-12.042 12.936-11.317 33.184 1.618 45.226 12.295 11.445 31.346 11.436 43.63-.021l82.752-82.752c37.491-37.49 37.491-98.274.001-135.764l-.001-.001.064-.001z"></path>
+    </svg>
         </button>
 
-        <button style={{
-          background: 'var(--color-white)',
-          width: '40px',
-          height: '40px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontWeight: '600',
-          borderRadius: '50%',
-          overflow: 'hidden',
-          border: '1px solid var(--color-off)'
-          }}>
-            <Image src={'/images/medium-shot-girl-relaxing-outdoors.jpg'} alt="user" width={1000} height={1000} style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover'
-            }}/>
-        </button>
+        
       </div>
     </div>
   )
