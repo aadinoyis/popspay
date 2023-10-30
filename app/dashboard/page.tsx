@@ -16,27 +16,37 @@ const Dashboard = async () => {
   const [user, setUser] = useState<any[] | null>([])
 
   const fetchUser = async () => {
-    const response = await fetch('/api/user', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-
-    const data = await response.json()
-    console.log(data)
-    setUser(data)
-  }
+    try {
+      const response = await fetch('/api/user', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      console.log(data);
+      setUser(data);
+    } catch (error) {
+      console.error('Error:', error);
+      // You can handle the error or provide user feedback here
+    }
+  };
   
   useEffect(() => {
-    fetchUser()
-  }, [])
+    fetchUser();
+  }, []);
+  
 
   return (
     <div className='dashboard'>
       <Nav/>
 
-      <Balance balance={user ? user[0].balance : null}/>
+      <Balance balance={user ? user[0].balance : ''}/>
       
       {n == 'action' && <ActionDocker/>}
       {n == 'notify' && <NotifyDocker/>}
