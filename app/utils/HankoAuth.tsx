@@ -25,14 +25,13 @@ export default function HankoAuth() {
   const createUser = async () => {
     const hanko = new Hanko(hankoApi);
     const {email} = await hanko.user.getCurrent();
-    console.log(email)
-    // fetch('/api/user', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({ email }),
-    // });
+    fetch('/api/user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+    });
   }
 
   useEffect(
