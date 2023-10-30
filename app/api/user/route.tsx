@@ -29,20 +29,36 @@ export async function POST(req: Request) {
 }
 
 export async function GET(req: Request) {
-  const token = cookies().get("hanko")?.value;
+  try {
+    const token = cookies().get("hanko")?.value;
   const payload = jose.decodeJwt(token ?? "");
 
   const userID = payload.sub;
 
-  if (userID) {
-    // Create a new user if the user is not found
-    const { data, error } = await supabase
-    .from('users')
-    .select('*')
-    .eq('user_id', userID);
 
-    return NextResponse.json({ message: data }, { status: 200 });
-  } else {
+    return NextResponse.json({ message: userID }, { status: 200 });
+  } catch (error) {
     return NextResponse.json({ error: "Not Found" }, { status: 404 });
+    
   }
+  
 }
+
+// export async function GET(req: Request) {
+//   const token = cookies().get("hanko")?.value;
+//   const payload = jose.decodeJwt(token ?? "");
+
+//   const userID = payload.sub;
+
+//   if (userID) {
+//     // Create a new user if the user is not found
+//     const { data, error } = await supabase
+//     .from('users')
+//     .select('*')
+//     .eq('user_id', userID);
+
+//     return NextResponse.json({ message: data }, { status: 200 });
+//   } else {
+//     return NextResponse.json({ error: "Not Found" }, { status: 404 });
+//   }
+// }

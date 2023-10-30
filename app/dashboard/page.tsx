@@ -12,32 +12,32 @@ const Dashboard = async () => {
   const searchParams = useSearchParams();
   const n = searchParams.get('n');
 
-  const [user, setUser] = useState<any[] | null>([])
+  // const [user, setUser] = useState<any[] | null>([])
 
-  const fetchUser = async () => {
-    fetch('/api/user', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    .then((response) => {
-      return response.json()
-    })
-    .then((data) => {
-      setUser(data)
-    })
-  }
+  // const fetchUser = async () => {
+  //   fetch('/api/user', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   })
+  //   .then((response) => {
+  //     return response.json()
+  //   })
+  //   .then((data) => {
+  //     setUser(data)
+  //   })
+  // }
   
-  useEffect(() => {
-    fetchUser()
-  }, [])
+  // useEffect(() => {
+  //   fetchUser()
+  // }, [])
 
   return (
     <div className='dashboard'>
       <Nav/>
 
-      <Balance balance={user![0].balance}/>
+      <Balance/>
       
       {n == 'action' && <ActionDocker/>}
       {n == 'notify' && <NotifyDocker/>}
