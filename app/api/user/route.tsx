@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import * as jose from "jose";
-// import { supabase } from "../../utils/Supabase";
+import { supabase } from "../../utils/Supabase";
 
 export async function POST(req: Request) {
   try {
@@ -12,18 +12,16 @@ export async function POST(req: Request) {
 
   const { email } = await req.json();
   if (!userID) {
-    
-    // Create a new user if the user is not found
-    // const { data, error } = await supabase
-    // .from('users')
-    // .upsert({ user_id: userID, email: email })
-    // .select()
-
     return NextResponse.json({ message: 'user not found' }, { status: 200 });
-
   }
+  // Create a new user if the user is not found
+  const { data, error } = await supabase
+  .from('users')
+  .upsert({ user_id: userID, email: email })
+  .select()
+
   console.log({ message: userID, email: email })
-  return NextResponse.json({ message: userID, email: email }, { status: 200 });
+  return NextResponse.json({ message: data, email: email }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: "Not Found" }, { status: 404 });
   }
