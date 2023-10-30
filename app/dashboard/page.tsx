@@ -7,7 +7,6 @@ import ActionDocker from '../components/ActionDocker'
 import { useSearchParams } from 'next/navigation'
 import VerifyDocker from '../components/VerifyDocker'
 import { useEffect, useState } from 'react'
-// import { useEffect, useState } from 'react'
 
 const Dashboard = async () => {
   const searchParams = useSearchParams();
