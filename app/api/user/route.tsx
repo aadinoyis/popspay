@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import * as jose from "jose";
-import { supabase } from "@/app/utils/Supabase";
+import { supabase } from "../../utils/Supabase";
 
 export async function POST(req: Request) {
   const token = cookies().get("hanko")?.value;
@@ -59,3 +59,5 @@ export async function GET(req: Request) {
 //     return NextResponse.json({ error: "Not Found" }, { status: 404 });
 //   }
 // }
+
+// {"message":"302bf13e-4ad2-4e74-bc4f-e40941d93d4d"}
