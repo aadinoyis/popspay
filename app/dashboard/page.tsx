@@ -28,9 +28,10 @@ const Dashboard = async () => {
       }
   
       const data = await response.json();
-      
+
       console.log(data[0].balance);
-      // setUser(data);
+      setUser(data);
+      console.log(user)
     } catch (error) {
       console.error('Error:', error);
       // You can handle the error or provide user feedback here
