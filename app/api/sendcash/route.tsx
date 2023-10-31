@@ -43,8 +43,8 @@ export async function POST(req: Request) {
     const receiver = receiverData[0];
 
     // Calculate new balances
-    const senderNewBalance = sender.balance - amount;
-    const receiverNewBalance = receiver.balance + amount;
+    const senderNewBalance = parseFloat(sender.balance) - parseFloat(amount);
+    const receiverNewBalance = parseFloat(receiver.balance) + parseFloat(amount);
 
     // Update sender's balance
     const { error: senderUpdateError } = await supabase
