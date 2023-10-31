@@ -2,15 +2,10 @@
 import Nav from '../components/Nav'
 import Balance from '../components/Balance'
 import PayDocker from '../components/PayDocker'
-// import NotifyDocker from '../components/NotifyDocker'
-// import ActionDocker from '../components/ActionDocker'
-// import { useSearchParams } from 'next/navigation'
-// import VerifyDocker from '../components/VerifyDocker'
+
 import { useEffect, useState } from 'react'
 
 const Dashboard = () => {
-  // const searchParams = useSearchParams();
-  // const n = searchParams.get('n');
 
   const [user, setUser] = useState([{email: '', user_id: '', balance: 0}])
 
@@ -33,7 +28,6 @@ const Dashboard = () => {
 
     } catch (error) {
       console.error('Error:', error);
-      // You can handle the error or provide user feedback here
     }
   };
 
@@ -42,10 +36,6 @@ const Dashboard = () => {
       <Nav/>
 
       <Balance balance={user[0].balance} email={user[0].email}/>
-      
-      {/* {n == 'action' && <ActionDocker/>}
-      {n == 'notify' && <NotifyDocker/>}
-      {n == 'verify' && <VerifyDocker/>} */}
       
       <PayDocker userId={user[0].user_id} />
     </div>

@@ -1,11 +1,9 @@
 'use client'
 import { useState } from "react";
-import Link from "next/link";
 import { RoundSpinner } from "./Loader";
 import NotifyDocker from "./NotifyDocker";
 
 const PayDocker = ({userId}:any) => {
-  // Assume you have imported 'fetch' or 'axios' or use your preferred HTTP client library
   const [receiverEmail, setReceiverEmail] = useState('')
   const [amount, setAmount] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -14,9 +12,9 @@ const PayDocker = ({userId}:any) => {
 
   // Define the transaction data
   const transactionData = {
-    senderID: userId, // Replace with the actual sender user ID
-    receiverEmail: receiverEmail, // Replace with the receiver's email
-    amount: amount, // Replace with the transaction amount
+    senderID: userId, 
+    receiverEmail: receiverEmail,
+    amount: amount, 
   };
 
   const sendCash = async ()  => {
@@ -39,7 +37,8 @@ const PayDocker = ({userId}:any) => {
       setIsNotify(true);
       setTimeout(() => {
         setIsNotify(false);
-      }, 10000);
+      }, 6000);
+      window.location.reload() // Refreshes the page, will be replaced with supabase live data
     }
     if (data.error) {
       setNotify('declined'); // Update the 'notify' state
@@ -48,7 +47,8 @@ const PayDocker = ({userId}:any) => {
       setIsNotify(true);
       setTimeout(() => {
         setIsNotify(false);
-      }, 10000);
+      }, 6000);
+      window.location.reload() // Refreshes the page, will be replaced with supabase live data
     }
     } catch (error) {
       console.error('Transaction failed:', error);

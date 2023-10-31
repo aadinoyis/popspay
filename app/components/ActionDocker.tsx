@@ -58,7 +58,6 @@ const ActionDocker = () => {
           </button>
           </Link>
 
-          <Link href={"?n=notify"}>
           <button style={{
             display: 'flex',
             flexDirection: 'column',
@@ -99,7 +98,6 @@ const ActionDocker = () => {
               </svg>
             </div>
           </button>
-          </Link>
         </div>
       </div>
     </div>

@@ -30,14 +30,10 @@ export async function POST(req: Request) {
       throw new Error('Error fetching user data');
     }
 
-    if (senderData.length === 0) {
-      throw new Error('Sender or receiver not found');
-    }
-
     const sender = senderData[0];
 
     // Calculate new balances
-    const senderNewBalance = parseFloat(sender.balance) - parseFloat(amount);
+    const senderNewBalance = parseFloat(sender.balance) + parseFloat(amount);
 
     // Update sender's balance
     const { error: senderUpdateError } = await supabase

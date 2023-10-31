@@ -20,7 +20,7 @@ const Balance = ({balance}:any) => {
         <span style={{
           fontSize: '3.2rem',
           fontWeight: '600',
-        }}>{balance}.00</span>
+        }}>{balance}</span>
 
         <div style={{
           color: 'var(--color-off)',

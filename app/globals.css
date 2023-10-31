@@ -14,7 +14,7 @@
   --color-black-50: #191919;
   --color-black-100: #272727;
   --color-black-150: #3c3c3c;
-  --radius: 15px;
+  --radius: 2rem;
 }
 
 hanko-auth,
@@ -38,7 +38,7 @@ hanko-profile {
   --font-family: sans-serif;
 
   /* Border Styles */
-  --border-radius: 8px;
+  --border-radius: 1rem;
   --border-style: none;
   --border-width: 1px;
 
@@ -85,6 +85,10 @@ input, button {
   background: transparent;
   cursor: pointer;
   min-width: 0;
+}
+
+input {
+  background: var(--color-black-50);
 }
 
 input::-webkit-inner-spin-button {

@@ -1,7 +1,3 @@
-'use client'
-import { useSearchParams } from "next/navigation"
-import { RoundSpinner } from "./Loader"
-import { useEffect, useState } from "react"
 
 const Accepted = () => {
   return (
@@ -169,33 +165,13 @@ const Declined = () => {
       <path d="M12 0c-1.784 0-3.471.4-4.993 1.098C7.55 2.135 8 3.351 8 4.5 8 6.981 5.981 9 3.5 9A4.45 4.45 0 01.7 7.994 11.948 11.948 0 000 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0zM5 12a1 1 0 011-1h4a1 1 0 110 2H6a1 1 0 01-1-1zm10.802 6.597a.998.998 0 01-1.399.205C14.396 18.797 13.289 18 12 18s-2.396.797-2.407.805a.999.999 0 01-1.19-1.607C8.469 17.149 10.035 16 12 16s3.531 1.149 3.597 1.198a.998.998 0 01.205 1.398zM18 13h-4a1 1 0 110-2h4a1 1 0 110 2zM2.927.269A.754.754 0 014.078.265C4.816 1.129 6 3.097 6 4.5a2.5 2.5 0 11-5 0C1 3.129 2.189 1.142 2.927.269z"></path>
     </svg>
 
-        <span><strong>Transaction declined</strong></span>
+        <span><strong>Transaction declined, user not found</strong></span>
       </div>
     </div>
   </div>
   )
 }
 const NotifyDocker = ({ status }: any) => {
-
-  // let notificationComponent;
-
-  // switch (status) {
-  //   case 'accepted':
-  //     notificationComponent = <Accepted />;
-  //     break;
-  //   case 'rejected':
-  //     notificationComponent = <Rejected />;
-  //     break;
-  //   case 'sent':
-  //     notificationComponent = <Sent />;
-  //     break;
-  //   case 'declined':
-  //     notificationComponent = <Declined />;
-  //     break;
-  //   default:
-  //     notificationComponent = <Declined />;
-  //     break;
-  // }
 
   return (
     <>
