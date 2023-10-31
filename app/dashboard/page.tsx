@@ -12,7 +12,7 @@ const Dashboard = () => {
   // const searchParams = useSearchParams();
   // const n = searchParams.get('n');
 
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState([{id: '', created_at: '', email: '', user_id: '', balance: ''}])
 
   useEffect(() => {
     getUser()
@@ -31,7 +31,7 @@ const Dashboard = () => {
 
       setUser(data);
 
-      console.log(data[0])
+      console.log(user)
 
     } catch (error) {
       console.error('Error:', error);
@@ -43,7 +43,7 @@ const Dashboard = () => {
     <div className='dashboard'>
       <Nav/>
 
-      <Balance balance={'-'}/>
+      <Balance balance={user[0].balance}/>
       
       {/* {n == 'action' && <ActionDocker/>}
       {n == 'notify' && <NotifyDocker/>}
