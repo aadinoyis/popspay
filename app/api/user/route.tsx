@@ -35,7 +35,7 @@ export async function GET(req: Request) {
     const userID = payload.sub;
     const { data, error } = await supabase
     .from('users')
-    .select('*')
+    .select('email, user_id, balance')
     .eq('user_id', userID);
 
     return NextResponse.json({ data } , { status: 200 });

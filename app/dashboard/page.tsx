@@ -12,7 +12,7 @@ const Dashboard = () => {
   // const searchParams = useSearchParams();
   // const n = searchParams.get('n');
 
-  const [user, setUser] = useState([{id: '', created_at: '', email: '', user_id: '', balance: ''}])
+  const [user, setUser] = useState([{email: '', user_id: '', balance: 0}])
 
   useEffect(() => {
     getUser()
@@ -30,8 +30,6 @@ const Dashboard = () => {
       const { data } = await response.json();
 
       setUser(data);
-
-      console.log(user)
 
     } catch (error) {
       console.error('Error:', error);
