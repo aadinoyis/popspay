@@ -31,7 +31,7 @@ const Dashboard = () => {
 
       setUser(data);
 
-      console.log(data)
+      console.log(data[0])
 
     } catch (error) {
       console.error('Error:', error);
@@ -43,7 +43,7 @@ const Dashboard = () => {
     <div className='dashboard'>
       <Nav/>
 
-      <Balance balance={user ? user : '-'}/>
+      <Balance balance={user ? user[0].balance : '-'}/>
       
       {/* {n == 'action' && <ActionDocker/>}
       {n == 'notify' && <NotifyDocker/>}
