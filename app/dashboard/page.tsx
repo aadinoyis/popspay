@@ -7,9 +7,11 @@ import ActionDocker from '../components/ActionDocker'
 import { useSearchParams } from 'next/navigation'
 import VerifyDocker from '../components/VerifyDocker'
 
-const Dashboard = async () => {
+const Dashboard = () => {
   const searchParams = useSearchParams();
   const n = searchParams.get('n');
+
+  let user:any;
 
   const fetchUser = async () => {
     try {
@@ -27,7 +29,8 @@ const Dashboard = async () => {
       const data = await response.json();
 
       console.log(data[0]);
-      return data[0]
+      user = data[0]
+      console.log(user)
 
     } catch (error) {
       console.error('Error:', error);
@@ -35,15 +38,13 @@ const Dashboard = async () => {
     }
   };
 
-  const user = await fetchUser();
 
-  console.log(user)
 
   return (
     <div className='dashboard'>
       <Nav/>
 
-      <Balance balance={'0'}/>
+      <Balance balance={user ? user!.balance : '-'}/>
       
       {n == 'action' && <ActionDocker/>}
       {n == 'notify' && <NotifyDocker/>}
