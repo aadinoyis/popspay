@@ -6,7 +6,7 @@ import NotifyDocker from '../components/NotifyDocker'
 import ActionDocker from '../components/ActionDocker'
 import { useSearchParams } from 'next/navigation'
 import VerifyDocker from '../components/VerifyDocker'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Dashboard = () => {
   const searchParams = useSearchParams();
@@ -29,7 +29,6 @@ const Dashboard = () => {
   
       const data = await response.json();
 
-      console.log(data);
       setUser(data)
       console.log(user)
 
@@ -39,7 +38,12 @@ const Dashboard = () => {
     }
   };
 
-  fetchUser()
+  useEffect(
+    () => {
+      fetchUser()
+    }, []
+  )
+  
 
   return (
     <div className='dashboard'>
