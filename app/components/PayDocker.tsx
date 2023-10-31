@@ -1,11 +1,17 @@
+'use client'
 import { useState } from "react";
 import Link from "next/link";
+import { RoundSpinner } from "./Loader";
+import NotifyDocker from "./NotifyDocker";
 
 const PayDocker = ({userId}:any) => {
   // Assume you have imported 'fetch' or 'axios' or use your preferred HTTP client library
   const [receiverEmail, setReceiverEmail] = useState('')
   const [amount, setAmount] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [isNotify, setIsNotify] = useState(false)
 
+  let notify;
   // Define the transaction data
   const transactionData = {
     senderID: userId, // Replace with the actual sender user ID
@@ -14,6 +20,7 @@ const PayDocker = ({userId}:any) => {
   };
 
   const sendCash = async ()  => {
+    setIsLoading(true)
     try {
       const response = await fetch('/api/sendcash', {
       method: 'POST',
@@ -25,6 +32,24 @@ const PayDocker = ({userId}:any) => {
 
     const data = await response.json()
     console.log(data)
+    if (data.message) {
+      notify = 'sent';
+
+      setIsLoading(false);
+      setIsNotify(true);
+      setTimeout(() => {
+        setIsNotify(false);
+      }, 5000);
+    }
+    if (data.error) {
+      notify = 'declined'
+
+      setIsLoading(false);
+      setIsNotify(true);
+      setTimeout(() => {
+        setIsNotify(false);
+      }, 5000);
+    }
     } catch (error) {
       console.error('Transaction failed:', error);
     }
@@ -112,6 +137,9 @@ const PayDocker = ({userId}:any) => {
         </button>
       </div>
     </div>
+
+    {isLoading && <RoundSpinner />}
+    {isNotify && <NotifyDocker status={notify}/>}
     </>
   )
 }

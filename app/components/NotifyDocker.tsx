@@ -175,23 +175,40 @@ const Declined = () => {
   </div>
   )
 }
+const NotifyDocker = ({ status }: any) => {
+  const [isLoading, setIsLoading] = useState(true);
 
-const NotifyDocker = () => {
-  const [isLoading, setIsLoading] = useState(true)
-  useEffect(()=>{
+  useEffect(() => {
     setTimeout(() => {
-      setIsLoading(false)
+      setIsLoading(false);
     }, 9000);
-  }, [])
+  }, []);
+
+  let notificationComponent;
+
+  switch (status) {
+    case 'accepted':
+      notificationComponent = <Accepted />;
+      break;
+    case 'rejected':
+      notificationComponent = <Rejected />;
+      break;
+    case 'sent':
+      notificationComponent = <Sent />;
+      break;
+    case 'declined':
+      notificationComponent = <Declined />;
+      break;
+    default:
+      notificationComponent = <Declined />;
+      break;
+  }
 
   return (
     <>
-    {isLoading ? <RoundSpinner/> : <Rejected/> }
-    {/* {isLoading ? <RoundSpinner/> : <Accepted/> } */}
-    {/* {isLoading ? <RoundSpinner/> : <Sent/> } */}
-    {/* {isLoading ? <RoundSpinner/> : <Declined/> } */}
+      {isLoading ? <RoundSpinner /> : notificationComponent}
     </>
-  )
-}
+  );
+};
 
 export default NotifyDocker
