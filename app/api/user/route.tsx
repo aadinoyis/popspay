@@ -38,7 +38,7 @@ export async function GET(req: Request) {
     .select('*')
     .eq('user_id', userID);
 
-    return NextResponse.json(data , { status: 200 });
+    return NextResponse.json(userID , { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: "Not Found" }, { status: 404 });
   }

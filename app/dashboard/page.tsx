@@ -29,8 +29,8 @@ const Dashboard = () => {
   
       const data = await response.json();
 
-      console.log(data[0]);
-      setUser(data[0])
+      console.log(data);
+      setUser(data)
       console.log(user)
 
     } catch (error) {
@@ -45,7 +45,7 @@ const Dashboard = () => {
     <div className='dashboard'>
       <Nav/>
 
-      <Balance balance={user.balance}/>
+      <Balance balance={'0'}/>
       
       {n == 'action' && <ActionDocker/>}
       {n == 'notify' && <NotifyDocker/>}
