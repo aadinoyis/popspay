@@ -37,18 +37,18 @@ const PayDocker = ({userId}:any) => {
 
       setIsLoading(false);
       setIsNotify(true);
-      // setTimeout(() => {
-      //   setIsNotify(false);
-      // }, 5000);
+      setTimeout(() => {
+        setIsNotify(false);
+      }, 10000);
     }
     if (data.error) {
       setNotify('declined'); // Update the 'notify' state
 
       setIsLoading(false);
       setIsNotify(true);
-      // setTimeout(() => {
-      //   setIsNotify(false);
-      // }, 5000);
+      setTimeout(() => {
+        setIsNotify(false);
+      }, 10000);
     }
     } catch (error) {
       console.error('Transaction failed:', error);
