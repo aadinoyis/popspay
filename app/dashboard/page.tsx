@@ -8,7 +8,7 @@ import { useSearchParams } from 'next/navigation'
 import VerifyDocker from '../components/VerifyDocker'
 import { useEffect, useState } from 'react'
 
-const Dashboard = async () => {
+const Dashboard = () => {
   const searchParams = useSearchParams();
   const n = searchParams.get('n');
 
