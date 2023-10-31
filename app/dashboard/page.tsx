@@ -6,12 +6,13 @@ import NotifyDocker from '../components/NotifyDocker'
 import ActionDocker from '../components/ActionDocker'
 import { useSearchParams } from 'next/navigation'
 import VerifyDocker from '../components/VerifyDocker'
+import { useState } from 'react'
 
 const Dashboard = () => {
   const searchParams = useSearchParams();
   const n = searchParams.get('n');
 
-  let user:any;
+  const [user, setUser] = useState<any>()
 
   const fetchUser = async () => {
     try {
@@ -29,7 +30,7 @@ const Dashboard = () => {
       const data = await response.json();
 
       console.log(data[0]);
-      user = data[0]
+      setUser(data[0])
       console.log(user)
 
     } catch (error) {
@@ -44,7 +45,7 @@ const Dashboard = () => {
     <div className='dashboard'>
       <Nav/>
 
-      <Balance balance={user ? user!.balance : '-'}/>
+      <Balance balance={user.balance}/>
       
       {n == 'action' && <ActionDocker/>}
       {n == 'notify' && <NotifyDocker/>}
