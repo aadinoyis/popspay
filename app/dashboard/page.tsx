@@ -29,7 +29,7 @@ const Dashboard = () => {
   
       const data = await response.json();
 
-      setUser(data)
+      setUser(data[0])
       console.log(user)
 
     } catch (error) {
