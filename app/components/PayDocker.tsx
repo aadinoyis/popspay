@@ -10,8 +10,8 @@ const PayDocker = ({userId}:any) => {
   const [amount, setAmount] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isNotify, setIsNotify] = useState(false)
+  const [notify, setNotify] = useState(''); // Use state for 'notify'
 
-  let notify;
   // Define the transaction data
   const transactionData = {
     senderID: userId, // Replace with the actual sender user ID
@@ -33,7 +33,7 @@ const PayDocker = ({userId}:any) => {
     const data = await response.json()
     console.log(data)
     if (data.message) {
-      notify = 'sent';
+      setNotify('sent'); // Update the 'notify' state
 
       setIsLoading(false);
       setIsNotify(true);
@@ -42,7 +42,7 @@ const PayDocker = ({userId}:any) => {
       // }, 5000);
     }
     if (data.error) {
-      notify = 'declined'
+      setNotify('declined'); // Update the 'notify' state
 
       setIsLoading(false);
       setIsNotify(true);
