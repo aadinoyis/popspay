@@ -41,7 +41,7 @@ const Dashboard = () => {
   useEffect(
     () => {
       fetchUser()
-    }, []
+    }, [user]
   )
   
 
