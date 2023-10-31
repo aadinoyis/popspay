@@ -1,7 +1,4 @@
-import {payWithPaystack} from '../utils/Paystack'
-
-
-const Balance = ({balance, email}:any) => {
+const Balance = ({balance}:any) => {
 
   return (
     <div style={{
@@ -48,7 +45,7 @@ const Balance = ({balance, email}:any) => {
               </svg>
             </button>
 
-            <button style={{display: 'flex', alignItems: 'center', gap: '1rem',letterSpacing: '2px', fontWeight: '600', color: 'var(--color-off)',}} onClick={() => payWithPaystack(email, 500)}>
+            <button style={{display: 'flex', alignItems: 'center', gap: '1rem',letterSpacing: '2px', fontWeight: '600', color: 'var(--color-off)',}}>
               <span>FUND</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
