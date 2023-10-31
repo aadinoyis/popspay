@@ -6,13 +6,10 @@ import NotifyDocker from '../components/NotifyDocker'
 import ActionDocker from '../components/ActionDocker'
 import { useSearchParams } from 'next/navigation'
 import VerifyDocker from '../components/VerifyDocker'
-import { useEffect, useState } from 'react'
 
 const Dashboard = async () => {
   const searchParams = useSearchParams();
   const n = searchParams.get('n');
-
-  const [user, setUser] = useState<any[] | null>([])
 
   const fetchUser = async () => {
     try {
@@ -29,19 +26,18 @@ const Dashboard = async () => {
   
       const data = await response.json();
 
-      console.log(data[0].balance);
-      setUser(data);
-      console.log(user)
+      console.log(data[0]);
+      return data[0]
+
     } catch (error) {
       console.error('Error:', error);
       // You can handle the error or provide user feedback here
     }
   };
-  
-  useEffect(() => {
-    fetchUser();
-  }, []);
-  
+
+  const user = await fetchUser();
+
+  console.log(user)
 
   return (
     <div className='dashboard'>
