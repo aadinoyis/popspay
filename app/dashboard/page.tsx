@@ -8,39 +8,42 @@ import PayDocker from '../components/PayDocker'
 // import VerifyDocker from '../components/VerifyDocker'
 import { useEffect, useState } from 'react'
 
-const Dashboard = async () => {
+const Dashboard = () => {
   // const searchParams = useSearchParams();
   // const n = searchParams.get('n');
 
   const [user, setUser] = useState<any[] | null>([])
 
-  const fetchUser = async () => {
+  useEffect(() => {
+    getUser()
+  }, [])
+  
+  const getUser = async () => {
     try {
       const response = await fetch('/api/user', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
-      });
+      })
 
       const { data } = await response.json();
+
       setUser(data);
-      return data
+
+      console.log(data)
+
     } catch (error) {
       console.error('Error:', error);
       // You can handle the error or provide user feedback here
     }
   };
 
-  const me = await fetchUser()
-
-  console.log(me)
-
   return (
     <div className='dashboard'>
       <Nav/>
 
-      <Balance balance={me ? me : '-'}/>
+      <Balance balance={user ? user : '-'}/>
       
       {/* {n == 'action' && <ActionDocker/>}
       {n == 'notify' && <NotifyDocker/>}
