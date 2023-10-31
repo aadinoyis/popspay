@@ -8,7 +8,7 @@ import PayDocker from '../components/PayDocker'
 // import VerifyDocker from '../components/VerifyDocker'
 import { useEffect, useState } from 'react'
 
-const Dashboard = () => {
+const Dashboard = async () => {
   // const searchParams = useSearchParams();
   // const n = searchParams.get('n');
 
@@ -24,24 +24,23 @@ const Dashboard = () => {
       });
 
       const { data } = await response.json();
-      console.log(data)
       setUser(data);
+      return data
     } catch (error) {
       console.error('Error:', error);
       // You can handle the error or provide user feedback here
     }
   };
 
-  useEffect(() => {
-      fetchUser()
-    }, []
-  )
+  const me = await fetchUser()
+
+  console.log(me)
 
   return (
     <div className='dashboard'>
       <Nav/>
 
-      <Balance balance={user ? user : '-'}/>
+      <Balance balance={me ? me : '-'}/>
       
       {/* {n == 'action' && <ActionDocker/>}
       {n == 'notify' && <NotifyDocker/>}
