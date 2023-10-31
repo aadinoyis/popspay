@@ -7,6 +7,7 @@ import ActionDocker from '../components/ActionDocker'
 import { useSearchParams } from 'next/navigation'
 import VerifyDocker from '../components/VerifyDocker'
 import { useEffect, useState } from 'react'
+import { supabase } from '../utils/Supabase'
 
 const Dashboard = () => {
   const searchParams = useSearchParams();
@@ -27,10 +28,18 @@ const Dashboard = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
   
-      const data = await response.json();
+      const {userID} = await response.json();
 
-      setUser(data[0])
+      setUser(userID)
+
       console.log(user)
+      const { data, error } = await supabase
+      .from('users')
+      .select('*')
+      .eq('user_id', userID);
+
+      console.log(data)
+  
 
     } catch (error) {
       console.error('Error:', error);
@@ -41,7 +50,7 @@ const Dashboard = () => {
   useEffect(
     () => {
       fetchUser()
-    }, [user]
+    }, []
   )
   
 
