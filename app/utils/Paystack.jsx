@@ -11,6 +11,9 @@ export const payWithPaystack = (email, amount) => {
   
     onSuccess: (transaction) => { 
       // Payment complete! Reference: transaction.reference
+      const ref = transaction.reference
+      console.log(ref)
+
       const fundWallet = async ()  => {
         setIsLoading(true)
         try {
@@ -19,7 +22,7 @@ export const payWithPaystack = (email, amount) => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(transaction.reference),
+          body: JSON.stringify({ref, email, amount}),
         })
     
         const data = await response.json()
@@ -33,6 +36,8 @@ export const payWithPaystack = (email, amount) => {
           console.error('Transaction failed:', error);
         }
       }
+      fundWallet()
+      
     },
     
     onCancel: () => {
