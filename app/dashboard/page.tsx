@@ -7,13 +7,12 @@ import ActionDocker from '../components/ActionDocker'
 import { useSearchParams } from 'next/navigation'
 import VerifyDocker from '../components/VerifyDocker'
 import { useEffect, useState } from 'react'
-import { supabase } from '../utils/Supabase'
 
-const Dashboard = () => {
+const Dashboard = async () => {
   const searchParams = useSearchParams();
   const n = searchParams.get('n');
 
-  const [user, setUser] = useState<any>()
+  const [user, setUser] = useState<any | null>([])
 
   const fetchUser = async () => {
     try {
@@ -28,15 +27,9 @@ const Dashboard = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
   
-      const {userID} = await response.json();
+      const { data } = await response.json();
 
-      const { data, error } = await supabase
-      .from('users')
-      .select('*')
-      .eq('user_id', userID);
-
-      setUser(data![0]);
-
+      setUser(data);
     } catch (error) {
       console.error('Error:', error);
       // You can handle the error or provide user feedback here
@@ -46,6 +39,12 @@ const Dashboard = () => {
   useEffect(
     () => {
       fetchUser()
+    }, []
+  )
+
+  useEffect(
+    () => {
+      console.log(user)
     }, [user]
   )
   
@@ -54,7 +53,7 @@ const Dashboard = () => {
     <div className='dashboard'>
       <Nav/>
 
-      <Balance balance={user.balance}/>
+      <Balance balance={user ? user : '-'}/>
       
       {n == 'action' && <ActionDocker/>}
       {n == 'notify' && <NotifyDocker/>}
