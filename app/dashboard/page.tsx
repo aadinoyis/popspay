@@ -30,15 +30,14 @@ const Dashboard = () => {
   
       const {userID} = await response.json();
 
-      setUser(userID)
-
-      console.log(user)
       const { data, error } = await supabase
       .from('users')
       .select('*')
       .eq('user_id', userID);
 
-      console.log(data)
+      setUser(data)
+
+      console.log(user)
   
 
     } catch (error) {
