@@ -29,7 +29,7 @@ const Dashboard = async () => {
   
       const data = await response.json();
       console.log(data);
-      // setUser(data);
+      setUser(data);
     } catch (error) {
       console.error('Error:', error);
       // You can handle the error or provide user feedback here
@@ -45,7 +45,7 @@ const Dashboard = async () => {
     <div className='dashboard'>
       <Nav/>
 
-      <Balance balance={'0'}/>
+      <Balance balance={user ? user[0].balance : ''}/>
       
       {n == 'action' && <ActionDocker/>}
       {n == 'notify' && <NotifyDocker/>}
