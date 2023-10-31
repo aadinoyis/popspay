@@ -12,7 +12,7 @@ const Dashboard = () => {
   // const searchParams = useSearchParams();
   // const n = searchParams.get('n');
 
-  const [user, setUser] = useState<any[] | null>([])
+  const [user, setUser] = useState([])
 
   useEffect(() => {
     getUser()
@@ -43,7 +43,7 @@ const Dashboard = () => {
     <div className='dashboard'>
       <Nav/>
 
-      <Balance balance={user ? user[0].balance : '-'}/>
+      <Balance balance={'-'}/>
       
       {/* {n == 'action' && <ActionDocker/>}
       {n == 'notify' && <NotifyDocker/>}
