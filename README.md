@@ -63,7 +63,7 @@ If you need payment integration, you can follow Paystack's documentation. This p
 
 1. Register and log in with Hanko.io authentication.
 
-2. You'll be rewarded with a fake 2,000 naira to perform transaction.
+2. You'll be rewarded with a fake 1,000 naira to perform transaction.
 
 3. You can now send money to other users using their email address.
 
