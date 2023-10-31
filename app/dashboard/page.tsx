@@ -41,13 +41,13 @@ const Dashboard = () => {
     <div className='dashboard'>
       <Nav/>
 
-      <Balance balance={user[0].balance}/>
+      <Balance balance={user[0].balance} email={user[0].email}/>
       
       {/* {n == 'action' && <ActionDocker/>}
       {n == 'notify' && <NotifyDocker/>}
       {n == 'verify' && <VerifyDocker/>} */}
       
-      <PayDocker userId={user[0].user_id}/>
+      <PayDocker userId={user[0].user_id} />
     </div>
   )
 }

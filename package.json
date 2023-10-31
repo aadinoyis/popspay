@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@paystack/inline-js": "^2.13.0",
     "@supabase/supabase-js": "^2.38.3",
     "@teamhanko/hanko-elements": "^0.9.0",
     "jose": "^5.0.1",
