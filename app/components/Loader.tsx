@@ -8,7 +8,11 @@ export const Loader = () => {
 
 export const Spinner = () => {
   return (
-    <div className='spinner'></div>
+    <div className="loader_container">
+      <div className="loader_box">
+      <div className='spinner'></div>
+      </div>
+    </div>
   )
 }
 export const RoundSpinner = () => {

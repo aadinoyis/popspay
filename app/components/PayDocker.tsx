@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import { RoundSpinner } from "./Loader";
+import { Spinner } from "./Loader";
 import NotifyDocker from "./NotifyDocker";
 
 const PayDocker = ({userId}:any) => {
@@ -138,7 +138,7 @@ const PayDocker = ({userId}:any) => {
       </div>
     </div>
 
-    {isLoading && <RoundSpinner />}
+    {isLoading && <Spinner />}
     {isNotify && <NotifyDocker status={notify}/>}
     </>
   )
