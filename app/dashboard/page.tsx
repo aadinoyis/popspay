@@ -47,7 +47,7 @@ const Dashboard = () => {
       {n == 'notify' && <NotifyDocker/>}
       {n == 'verify' && <VerifyDocker/>} */}
       
-      <PayDocker/>
+      <PayDocker userId={user[0].user_id}/>
     </div>
   )
 }

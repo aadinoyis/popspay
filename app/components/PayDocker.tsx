@@ -1,6 +1,34 @@
+import { useState } from "react";
 import Link from "next/link";
 
-const PayDocker = ({onclick}:any) => {
+const PayDocker = ({userId}:any) => {
+  // Assume you have imported 'fetch' or 'axios' or use your preferred HTTP client library
+  const [receiverEmail, setReceiverEmail] = useState('')
+  const [amount, setAmount] = useState('')
+
+  // Define the transaction data
+  const transactionData = {
+    senderID: userId, // Replace with the actual sender user ID
+    receiverEmail: receiverEmail, // Replace with the receiver's email
+    amount: amount, // Replace with the transaction amount
+  };
+
+  const sendCash = async ()  => {
+    try {
+      const response = await fetch('/api/sendcash', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(transactionData),
+    })
+
+    const data = await response.json()
+    console.log(data)
+    } catch (error) {
+      console.error('Transaction failed:', error);
+    }
+  }
 
   return (
     <>    
@@ -36,7 +64,7 @@ const PayDocker = ({onclick}:any) => {
           </svg>
         </button>
 
-        <input type="text" name="recepient" id="recepient" placeholder="user@mail.com"/>
+        <input type="text" name="recepient" id="recepient" placeholder="user@mail.com" value={receiverEmail} onChange={e => setReceiverEmail(e.target.value)}/>
 
 
         <button style={{marginRight: '.7rem'}}>
@@ -69,10 +97,9 @@ const PayDocker = ({onclick}:any) => {
           </svg>
         </button>
 
-        <input type="text" name="amount" id="amount" placeholder="00.00"/>
+        <input type="text" name="amount" id="amount" placeholder="00.00" value={amount} onChange={e => setAmount(e.target.value)}/>
         
-        <Link href={"?n=action"} onClick={onclick} className='btn_pri'>
-        <button >
+        <button onClick={sendCash} className='btn_pri'>
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="512"
@@ -83,7 +110,6 @@ const PayDocker = ({onclick}:any) => {
             <path d="M5.521 19.9h5.322l3.519 3.515a2.035 2.035 0 001.443.6 2.1 2.1 0 00.523-.067 2.026 2.026 0 001.454-1.414l6.207-21.109zM4.087 18.5L22.572.012 1.478 6.233a2.048 2.048 0 00-.886 3.42l3.495 3.492z"></path>
           </svg>
         </button>
-        </Link>
       </div>
     </div>
     </>
