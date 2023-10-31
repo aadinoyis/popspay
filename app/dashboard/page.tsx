@@ -38,7 +38,7 @@ const Dashboard = () => {
     }
   };
 
-
+  fetchUser()
 
   return (
     <div className='dashboard'>
